@@ -1,0 +1,53 @@
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="wrapper fadeInDown zero-raduis">
+    <div id="formContent">
+        <!-- Tabs Titles -->
+
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <div class="row menu_style1">
+                <div class="col-md-4">
+                    <div class="single_menu_list">
+                        <img src="../assets/icons/octo_log.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" /> -->
+            <h2 class="my-5">Register In</h2>
+        </div>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="erreur">
+            <strong>{{erreur}}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="cli()">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+        </div>
+
+        <!-- Login Form -->
+        <form [formGroup]="registerForm" (ngSubmit)="onRegister(registerForm.value)" novalidate>
+            <input type="email" id="email" class="fadeIn second zero-raduis" placeholder="Enter your Email ?" formControlName="username">
+            <input type="password" id="password" class="fadeIn third zero-raduis" placeholder="Enter your password" formControlName="password" required>
+            <input type="password" id="password" class="fadeIn third zero-raduis" placeholder="Re-enter your password" formControlName="confirmedpassword" required>
+            <select id="centre" name="centreslist" class="fadeIn third zero-raduis" multiple *ngIf="user" formControlName="listes">
+                <option *ngFor="let c of user._embedded.centreLists"> {{c.nom}}</option>
+              
+                
+              </select>
+            <input type="submit" class="fadeIn fourth zero-raduis" value="Ajouter">
+            <h2>you have a account ?</h2>
+            <input type="button" class="fadeIn fourth zero-raduis pc" value="SingIn" routerLink="/login">
+
+        </form>
+        <!--   <div class="shadow-lg p-4 mb-2 bg-white author">
+            <a>© 2020 Creative Abair Abdellah, all rights reserved.</a>
+        </div>-->
+
+    </div>
+
+</div>
+<div *ngIf="cat">
+    <p *ngFor="let c of cat._embedded.appUsers">
+        {{c.username}}
+
+    </p>
+</div>

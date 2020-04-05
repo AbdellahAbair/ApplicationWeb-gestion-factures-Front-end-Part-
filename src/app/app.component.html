@@ -1,0 +1,44 @@
+<router-outlet>
+    <header *ngIf="showComponent">
+        <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand"><img src="../assets/icons/octopus-icon.png" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link">
+                            <i class="fa fa-home"></i> Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user"></i> Gestion des utilisateurs
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" (click)="Ajouter()">Ajout</a>
+                            <a class="dropdown-item " (click)="Consulter()">Editer/Supprimer</a>
+                            <div class="dropdown-divider "></div>
+                            <a class="dropdown-item ">Users</a>
+                        </div>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" [routerLink]="['/acceuill']" routerLinkActive="acceuill">
+                            <i class="fas fa-box-open"></i> Gestion des factures
+                        </a>
+                    </li>
+
+                </ul>
+
+
+                <button class="btn btn-link my-2 my-sm-0 " (click)="Deconnecter()">Déconnecter</button>
+
+            </div>
+        </nav>
+    </header>
+</router-outlet>

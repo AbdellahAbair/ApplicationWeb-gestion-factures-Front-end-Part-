@@ -1,0 +1,108 @@
+<div class="container contact-form">
+    <div class="contact-image">
+
+    </div>
+    <form method="post" [formGroup]="OctoForm">
+        <h3>Espace des factures Duplicata</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="date" name="txtName" class="form-control" placeholder="Entrer le date ?" formControlName="date" />
+                </div>
+                <div class="form-group">
+                    <input type="number" name="txtEmail" class="form-control" placeholder="Centre expédition ?" formControlName="code_exp" />
+                </div>
+                <div class="form-group">
+                    <input type="number" name="txtPhone" class="form-control" placeholder="N de client? " formControlName="code_clt" />
+                </div>
+                <div class="form-group">
+                    <input type="text" name="txtPhone" class="form-control" placeholder="Numero de facture" formControlName="num_fac" />
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" name="btnSubmit" class="btnContact" value="Rechercher" (click)="rechercher()" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div id="cars">
+                    <div class="form-group">
+                        <select class="form-control" placeholder="" id="cars" formControlName="cars">
+                        <option value="Factures ELIS" selected>Factures ELIS</option>
+                        <option value="Factures ESKER">Factures ESKER</option>
+                        <option value="Factures CARS" >Factures CARS</option>
+                        <option value="Factures PCE">Factures PCE</option>
+                      </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="txtEmail" class="form-control" placeholder="Your Email *" formControlName="mail" />
+                </div>
+                <div class="form-group">
+                    <textarea id="story" name="story" class="form-control" formControlName="commentaires">
+                     Plein de text?
+          </textarea>
+
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" name="btnSubmit" class="btneffcer" value="Effacer" (click)="effacer()" />
+                </div>
+
+            </div>
+
+            <div class="col-lg-12">
+
+                <div class="span7" *ngIf="hide">
+                    <div class="widget stacked widget-table action-table">
+
+                        <div class="widget-header">
+                            <i class="icon-th-list"></i>
+                            <h3>Factures Duplicata</h3>
+                        </div>
+                        <!-- /widget-header -->
+                        <div class="widget-content">
+
+                            <table class="table table-striped table-bordered" *ngIf="list">
+                                <thead>
+                                    <tr>
+                                        <th>Code exploitation</th>
+                                        <th>Code client</th>
+                                        <th>Date</th>
+                                        <th>Numero Facture</th>
+                                        <th>montant ttc</th>
+                                        <th>montant htc</th>
+                                        <th class="td-actions">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let facture of list._embedded.factures">
+                                        <td>{{facture.codeExp}}</td>
+                                        <td>{{facture.codeClt}}</td>
+                                        <td>{{facture.dateFac}}</td>
+                                        <td>{{facture.numFac}}</td>
+                                        <td>{{facture.mntTtc}}</td>
+                                        <td>{{facture.mntHt}}</td>
+                                        <td class="td-actions">
+                                            <a href="javascript:;" class="btn btn-small btn-primary" (click)="rowData(facture)">
+                                                <i class="fas fa-print"></i>
+                                            </a>
+
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <!-- /widget-content -->
+
+                    </div>
+                    <!-- /widget -->
+                </div>
+
+
+                <!--table-->
+            </div>
+        </div>
+    </form>
+</div>
